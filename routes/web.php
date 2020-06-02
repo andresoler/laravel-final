@@ -15,4 +15,8 @@ Route::get('/', 'UserController@index')->middleware('auth');
 Route::post('users', 'UserController@store')->name('users.store')->middleware('auth');
 Route::delete('users/{user}', 'UserController@destroy')->name('users.destroy')->middleware('auth');
 
+Route::resource('Page', 'PageController');
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
