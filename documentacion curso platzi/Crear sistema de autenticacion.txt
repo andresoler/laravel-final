@@ -1,0 +1,10 @@
+Para poder usar el sistema de autenticacion de laravel se deben ejecutar los siguientes comando en consola:
+
+1. composer require laravel/ui --dev
+
+2. Se verifica que el los comandos php artisan haya uno nuevo de ui (sistema de autenticacion)
+
+3. php artisan
+
+4. php artisan ui bootstrap --auth  (Se intala autenticacion con diseños bootstrap)
+
