@@ -54,3 +54,21 @@ Route::get('queryUsers', function () {
     }
     
 });
+
+Route::get('colecciones', function () {
+
+    $users = User::get();
+
+    //dd($users);
+    //dd($users->contains(4)); //muestra si existe coleccion #4 return true / false
+    //dd($users->except([1,2,3])); //muestra todas las colecciones excepto
+    //dd($users->only(4)); //muestra solo las colecciones
+    //dd($users->find(4)); // muestra el id de la coleccion
+    //dd($users->load('posts')); // muestra la relacion de usuarios con la tabla posts
+
+    /* crea un json con la coleccion seleccionada
+    $serialize = $users->find(4);
+    dd($serialize->toJson());
+    */
+    
+});
