@@ -1,0 +1,20 @@
+Factory permite crear registros automaticamente para realizar pruebas
+
+1. Se ejecuta comando para ver ayuda:
+php artisan make:model -h
+2. Se crea model con migracion y factory (Se crea modelo en singular(Post) para que Laravel lo pase a plural(Posts))
+php artisan make:model Post -m -f
+3. Ejecutamos migracion con comando
+php artisan migrate
+4. Se edita el factory segun sea necesario
+$factory->define(Post::class, function (Faker $faker) {
+    return [
+        'title' => $faker->sentence
+    ];
+});
+
+5. uso de tinker para agregar datos automaticamente de prueba a la data
+php artisan tinker
+6. se ejcuta el comando factory del modelo (el 30 es el numero de registros a insertar)
+factory(App\Post::class, 30)->create()
+
