@@ -72,3 +72,33 @@ Route::get('colecciones', function () {
     */
     
 });
+
+Route::get('getAttributeUsers', function () {
+
+    $users = User::get();
+
+    foreach ($users as $user) {
+
+        echo " 
+        $user->id 
+        $user->get_name
+        {$user->Posts->count()} <br>";
+
+    }
+    
+});
+
+Route::get('getAttributePosts', function () {
+
+    $posts = Post::get();
+
+    foreach ($posts as $post) {
+
+        echo " 
+        $post->id 
+        {$post->User->name}
+        $post->get_title <br>";
+
+    }
+    
+});

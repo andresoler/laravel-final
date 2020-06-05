@@ -1,0 +1,64 @@
+1. configurar entidad para que cuando se llame la funcion me traiga la configuracion
+para el ejemplo me trae los titulos y el nombre en mayuscula
+
+//EN LA ENTIDAD se utiliza el prefijo en la entidad getAttribute()
+
+    public function getGetTitleAttribute()
+    {
+        //Convierte el titulo en mayuscula de forma visual sin alterar DB
+        return strtoupper($this->title);
+    }
+
+    public function getGetNameAttribute()
+    {
+        //Convierte el nombre en mayuscula de forma visual sin alterar DB
+        return strtoupper($this->name);
+    }
+
+// EN LA RUTA O CONTROLADOR SE USA LA FUNCION get_name / get_title
+
+Route::get('getAttributeUsers', function () {
+
+    $users = User::get();
+
+    foreach ($users as $user) {
+
+        echo " 
+        $user->id 
+        $user->get_name
+        {$user->Posts->count()} <br>";
+
+    }
+    
+});
+
+Route::get('getAttributePosts', function () {
+
+    $posts = Post::get();
+
+    foreach ($posts as $post) {
+
+        echo " 
+        $post->id 
+        {$post->User->name}
+        $post->get_title <br>";
+
+    }
+    
+});
+
+
+2. Setear una configuracion en el momento que se guarde un dato en la entidad se utiliza el prefijo en la entidad setAttribute($value)
+
+    public function setTitleAttribute($value)
+    {
+        //Convierte el nombre en minuscula cada que se guarde un valor nuevo en la entidad
+        $this->attributes['title'] = strtolower($value);
+    }
+    
+    public function setNameAttribute($value)
+    {
+        //Convierte el nombre en minuscula cada que se guarde un valor nuevo en la entidad
+        $this->attributes['name'] = strtolower($value);
+    }
+

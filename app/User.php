@@ -42,4 +42,16 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
 
     }
+
+    public function getGetNameAttribute()
+    {
+        //Convierte el nombre en mayuscula de forma visual sin alterar DB
+        return strtoupper($this->name);
+    }
+
+    public function setNameAttribute($value)
+    {
+        //Convierte el nombre en minuscula cada que se guarde un valor nuevo en la entidad
+        $this->attributes['name'] = strtolower($value);
+    }
 }
