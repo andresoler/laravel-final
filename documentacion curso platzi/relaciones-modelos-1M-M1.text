@@ -1,0 +1,51 @@
+1. Relaciones de Muchos a Uno (Un Usuario puede tener muchos posts)
+
+    public function Posts () {
+        
+        return $this->hasMany(Post::class);
+
+    }
+
+2. Relaciones de Uno a Muchos
+
+    public function User () {
+        
+        return $this->belongsTo(User::class);
+
+    }
+
+3. Se ceran vistas de ejemplo para representar los datos
+
+Use App\Post;
+
+Route::get('queryPosts', function () {
+
+    $posts = Post::get();
+
+    foreach ($posts as $post) {
+
+        echo " 
+        $post->id 
+        {$post->User->name}
+        $post->title <br>";
+
+    }
+    
+});
+
+Use App\User;
+
+Route::get('queryUsers', function () {
+
+    $users = User::get();
+
+    foreach ($users as $user) {
+
+        echo " 
+        $user->id 
+        $user->name
+        {$user->Posts->count()} <br>";
+
+    }
+    
+});

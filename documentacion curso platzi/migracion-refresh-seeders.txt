@@ -1,0 +1,11 @@
+1. Se edita la migracion y se ejecuta el comando para actualizar todas las migraciones ESTE COMANDO BORRRA TODA LA DATA
+php artisan migrate:refresh
+2. Se edita el Seeds en App\database\Seeds para que se ejecute toda vez que se actualicen las migraciones, Insertando los datos a la DB
+    public function run()
+    {
+        // $this->call(UsersTableSeeder::class);
+        factory(App\User::class, 4)->create();
+        factory(App\Post::class, 30)->create();
+    }
+3. Se ejecuta el comando de migracion con los seeders que insertan datos en la DB
+php artisan migrate:refresh --seed

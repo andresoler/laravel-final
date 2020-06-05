@@ -20,3 +20,37 @@ Route::resource('Page', 'PageController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Use App\Post;
+
+Route::get('queryPosts', function () {
+
+    $posts = Post::get();
+
+    foreach ($posts as $post) {
+
+        echo " 
+        $post->id 
+        {$post->User->name}
+        $post->title <br>";
+
+    }
+    
+});
+
+Use App\User;
+
+Route::get('queryUsers', function () {
+
+    $users = User::get();
+
+    foreach ($users as $user) {
+
+        echo " 
+        $user->id 
+        $user->name
+        {$user->Posts->count()} <br>";
+
+    }
+    
+});
