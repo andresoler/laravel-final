@@ -1,0 +1,7 @@
+-En consola:
+//Pruebas funcionales
+php artisan make:test UserTest
+//Pruebas unitarias
+php artisan make:test UserTest --unit
+//ejecutar pruebas
+vendor/bin/phpunit
